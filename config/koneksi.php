@@ -2,7 +2,7 @@
 date_default_timezone_set('Asia/Jakarta');
 $server = "localhost";
 $username = "root";
-$password = "superadmin";
+$password = "superadmin"; // before push should be back to superadmin
 $database = "pesantren";
 
 

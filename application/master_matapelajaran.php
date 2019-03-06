@@ -9,13 +9,13 @@
                 href='index.php?view=matapelajaran&act=tambah&tingkat=<?php echo $_GET[tingkat]; ?>'>Tambahkan Data</a>
             <?php } ?>
         </div><!-- /.box-header -->
-        <div class="box-body">
-            <!-- <a class='btn btn-default btn-sm' href='index.php?view=matapelajaran&tingkat=X'>Tingkat VII</a>
-            <a class='btn btn-default btn-sm' href='index.php?view=matapelajaran&tingkat=XI'>Tingkat VIII</a>
-            <a class='btn btn-default btn-sm' href='index.php?view=matapelajaran&tingkat=XII'>Tingkat IX</a> -->
+        <div class="box-body table-responsive no-padding">
             <a class='btn btn-default btn-sm' href='index.php?view=matapelajaran&tingkat=VII'>Tingkat VII</a>
             <a class='btn btn-default btn-sm' href='index.php?view=matapelajaran&tingkat=VIII'>Tingkat VIII</a>
             <a class='btn btn-default btn-sm' href='index.php?view=matapelajaran&tingkat=IX'>Tingkat IX</a>
+            <a class='btn btn-default btn-sm' href='index.php?view=matapelajaran&tingkat=X'>Tingkat X</a>
+            <a class='btn btn-default btn-sm' href='index.php?view=matapelajaran&tingkat=XI'>Tingkat XI</a>
+            <a class='btn btn-default btn-sm' href='index.php?view=matapelajaran&tingkat=XII'>Tingkat XII</a>
             <?php 
                   if (isset($_GET['sukses'])){
                       echo "<div class='alert alert-success alert-dismissible fade in' role='alert'> 
@@ -29,7 +29,7 @@
                           </div>";
                   }
                 ?>
-            <table id="example2" class="table table-bordered table-striped">
+            <table id="example2" class="table table-hover">
                 <thead>
                     <tr>
                         <th style='width:30px'>No</th>
@@ -169,8 +169,8 @@
                              echo "</select>
                     </td></tr>
                     <tr><th scope='row'>Tingkat</th>              <td><select class='form-control' name='h'>";
-                          $tingkat = array('VII','VIII','IX');
-                          for ($i = 0; $i <= 2; $i++){
+                          $tingkat = array('VII','VIII','IX', 'X', 'XI', 'XII');
+                          for ($i = 0; $i <= 5; $i++){
                             if ($s[tingkat]==$tingkat[$i]){
                               echo "<option value='".$tingkat[$i]."' selected>".$tingkat[$i]."</option>";
                             }else{
@@ -265,8 +265,8 @@
                              echo "</select>
                     </td></tr>
                     <tr><th scope='row'>Tingkat</th>              <td><select class='form-control' name='h'>";
-                          $tingkat = array('VII','VIII','IX');
-                          for ($i = 0; $i <= 2; $i++){
+                          $tingkat = array('VII','VIII','IX', 'X', 'XI', 'XII');
+                          for ($i = 0; $i <= 5; $i++){
                             if ($_GET[tingkat]==$tingkat[$i]){
                               echo "<option value='".$tingkat[$i]."' selected>".$tingkat[$i]."</option>";
                             }else{

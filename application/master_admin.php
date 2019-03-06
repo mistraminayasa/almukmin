@@ -1,12 +1,12 @@
-<?php if ($_GET[act]==''){ ?> 
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Data Administrator </h3>
-                  <a class='pull-right btn btn-primary btn-sm' href='index.php?view=admin&act=tambah'>Tambahkan Data Admin</a>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                <?php 
+<?php if ($_GET[act]==''){ ?>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Data Administrator </h3>
+            <a class='pull-right btn btn-primary btn-sm' href='index.php?view=admin&act=tambah'>Tambahkan Data Admin</a>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <?php 
                   if (isset($_GET['sukses'])){
                       echo "<div class='alert alert-success alert-dismissible fade in' role='alert'> 
                           <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -19,9 +19,9 @@
                           </div>";
                   }
                 ?>
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+            <table id="example1" class="table table-hover">
+                <thead>
+                    <tr>
                         <th style='width:30px'>No</th>
                         <th>Username</th>
                         <th>Nama Lengkap</th>
@@ -30,10 +30,10 @@
                         <th>Jabatan</th>
                         <th>Level</th>
                         <th style='width:70px'>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php 
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
                     $tampil = mysql_query("SELECT * FROM rb_users where level='superuser' ORDER BY id_user DESC");
                     $no = 1;
                     while($r=mysql_fetch_array($tampil)){
@@ -57,11 +57,11 @@
                       }
 
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div>
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+</div>
 <?php 
 }elseif($_GET[act]=='edit'){
     if (isset($_POST[update])){

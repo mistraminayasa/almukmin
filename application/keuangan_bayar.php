@@ -1,14 +1,14 @@
 <?php 
 if ($_GET[act]==''){ 
-?> 
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Pembayaran Keuangan Siswa </h3>
-                  <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
-                    <input type="hidden" name='view' value='pembayaransiswa'>
-                    <select name='biaya' style='padding:4px'>
-                        <?php 
+?>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Pembayaran Keuangan Siswa </h3>
+            <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+                <input type="hidden" name='view' value='pembayaransiswa'>
+                <select name='biaya' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Jenis Biaya -</option>";
                             $biaya = mysql_query("SELECT * FROM rb_keuangan_jenis");
                             while ($k = mysql_fetch_array($biaya)){
@@ -19,9 +19,9 @@ if ($_GET[act]==''){
                               }
                             }
                         ?>
-                    </select>
-                    <select name='kelas' style='padding:4px'>
-                        <?php 
+                </select>
+                <select name='kelas' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Filter Kelas -</option>";
                             $kelas = mysql_query("SELECT * FROM rb_kelas");
                             while ($k = mysql_fetch_array($kelas)){
@@ -32,14 +32,14 @@ if ($_GET[act]==''){
                               }
                             }
                         ?>
-                    </select>
+                </select>
 
-                    <input type="submit" style='margin-top:-4px' class='btn btn-info btn-sm' value='Lihat'>
-                  </form>
-                </div><!-- /.box-header -->
-                <div class="box-body">
+                <input type="submit" style='margin-top:-4px' class='btn btn-info btn-sm' value='Lihat'>
+            </form>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
 
-                <?php 
+            <?php 
                   if (isset($_GET['sukses'])){
                       echo "<div class='alert alert-success alert-dismissible fade in' role='alert'> 
                           <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -53,12 +53,12 @@ if ($_GET[act]==''){
                   }
                 ?>
 
-                <form action='' method='POST'>
+            <form action='' method='POST'>
                 <input type="hidden" name='kelas' value='<?php echo $_GET[kelas]; ?>'>
                 <?php 
                 $j = mysql_fetch_array(mysql_query("SELECT * FROM `rb_keuangan_jenis` where id_keuangan_jenis='$_GET[biaya]'"));
                 $th = mysql_fetch_array(mysql_query("SELECT * FROM rb_tahun_akademik where aktif='Ya'"));
-                echo "<table id='example1' class='table table-bordered table-striped'>
+                echo "<table id='example1' class='table table-hover'>
                     <thead>
                     <tr><th width='30px'>No</th>
                         <th>NIPD</th>
@@ -124,17 +124,17 @@ if ($_GET[act]==''){
                           }
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                <?php 
+                </tbody>
+                </table>
+        </div><!-- /.box-body -->
+        <?php 
                     if ($_GET[kelas] == '' AND $_GET[biaya] == ''){
                         echo "<center style='padding:60px; color:red'>Silahkan Memilih Jenis Biaya dan Kelas Terlebih dahulu...</center>";
                     }
                 ?>
-              </div><!-- /.box -->
-              </form>
-            </div>
+    </div><!-- /.box -->
+    </form>
+</div>
 <?php 
 }elseif($_GET[act]=='detail'){
     if (isset($_POST[proses])){

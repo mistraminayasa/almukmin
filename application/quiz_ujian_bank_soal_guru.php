@@ -1,13 +1,13 @@
 <?php if ($_GET[act]==''){ ?>
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"><?php echo "Bank Soal Quiz dan Ujian Pada $tahunakademik[id_tahun_akademik]" ; ?></h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title"><?php echo "Bank Soal Quiz dan Ujian Pada $tahunakademik[id_tahun_akademik]" ; ?></h3>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
                         <th style='width:20px'>No</th>
                         <th>Kode Pelajaran</th>
                         <th>Jadwal Pelajaran</th>
@@ -18,10 +18,10 @@
                         <th>Selesai</th>
                         <th>Ruang</th>
                         <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                     if (isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -57,11 +57,11 @@
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                </div>
-            </div>
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+    </div>
+</div>
 
 <?php 
 }elseif($_GET[act]=='lihatessai'){

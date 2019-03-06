@@ -1,12 +1,14 @@
 <?php if ($_GET[act]==''){ ?>
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"><?php if (isset($_GET[kelas]) AND isset($_GET[tahun])){ echo "Absensi siswa"; }else{ echo "Absensi Siswa Pada Tahun ".date('Y'); } ?></h3>
-                  <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
-                    <input type="hidden" name='view' value='absensiswa'>
-                    <select name='tahun' style='padding:4px'>
-                        <?php 
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">
+                <?php if (isset($_GET[kelas]) AND isset($_GET[tahun])){ echo "Absensi siswa"; }else{ echo "Absensi Siswa Pada Tahun ".date('Y'); } ?>
+            </h3>
+            <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+                <input type="hidden" name='view' value='absensiswa'>
+                <select name='tahun' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Tahun Akademik -</option>";
                             $tahun = mysql_query("SELECT * FROM rb_tahun_akademik");
                             while ($k = mysql_fetch_array($tahun)){
@@ -17,9 +19,9 @@
                               }
                             }
                         ?>
-                    </select>
-                    <select name='kelas' style='padding:4px'>
-                        <?php 
+                </select>
+                <select name='kelas' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Kelas -</option>";
                             $kelas = mysql_query("SELECT * FROM rb_kelas");
                             while ($k = mysql_fetch_array($kelas)){
@@ -30,15 +32,15 @@
                               }
                             }
                         ?>
-                    </select>
-                    <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
-                  </form>
+                </select>
+                <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
+            </form>
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <table id="example" class="table table-hover">
+                <thead>
+                    <tr>
                         <th style='width:20px'>No</th>
                         <th>Jadwal Pelajaran</th>
                         <th>Kelas</th>
@@ -51,10 +53,10 @@
                         <?php if($_SESSION[level]!='kepala'){ ?>
                         <th>Action</th>
                         <?php } ?>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                     if (isset($_GET[kelas]) AND isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, b.kode_kurikulum, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -87,16 +89,16 @@
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                <?php 
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+        <?php 
                     if ($_GET[kelas] == '' AND $_GET[tahun] == ''){
                         echo "<center style='padding:60px; color:red'>Silahkan Memilih Tahun akademik dan Kelas Terlebih dahulu...</center>";
                     }
                 ?>
-                </div>
-            </div>
+    </div>
+</div>
 <?php 
 }elseif($_GET[act]=='tampilabsen'){
   if ($_GET[gettgl]){
@@ -149,7 +151,7 @@
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Jurnal KBM dan Daftar Hadir Siswa : <b style='color:red'>".tgl_indo("$filtertgl")."</b></h3>
                 </div>
-              <div class='box-body'>";
+              <div class='box-body table-responsive no-padding'>";
 
                   if (isset($_GET['sukses'])){
                       echo "<div class='alert alert-success alert-dismissible fade in' role='alert'> 
@@ -247,7 +249,7 @@
               <input type='hidden' name='jdwl' value='$_GET[jdwl]'>
               <input type='hidden' name='idj' value='$jo[id_journal]'>
                 <div class='col-md-12'>
-                  <table class='table table-condensed table-bordered table-striped'>
+                  <table class='table table-hover'>
                       <thead>
                       <tr>
                         <th>No</th>
@@ -368,11 +370,11 @@
                     }
                 }
 }elseif($_GET[act]=='detailabsenguru'){ ?>
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"><?php echo "Absensi Siswa pada $tahunakademik[id_tahun_akademik]"; ?></h3>
-                  <!--<form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title"><?php echo "Absensi Siswa pada $tahunakademik[id_tahun_akademik]"; ?></h3>
+            <!--<form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
                     <input type="hidden" name='view' value='absensiswa'>
                     <input type="hidden" name='act' value='detailabsenguru'>
                     <select name='tahun' style='padding:4px'>
@@ -391,11 +393,11 @@
                     <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
                   </form>-->
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <table id="example1" class="table table-hover">
+                <thead>
+                    <tr>
                         <th style='width:20px'>No</th>
                         <th>Jadwal Pelajaran</th>
                         <th>Kelas</th>
@@ -406,10 +408,10 @@
                         <th>Ruangan</th>
                         <th>Semester</th>
                         <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                     if (isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -443,12 +445,12 @@
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                </div>
-            </div>
-                                
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+    </div>
+</div>
+
 <?php
 }elseif($_GET[act]=='detailabsensiswa'){ 
     echo "<div class='col-xs-12'>  

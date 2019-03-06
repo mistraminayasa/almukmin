@@ -8,7 +8,7 @@
                 <select name='tingkat' style='padding:4px'>
                     <option value='0' selected>- Pilih Tingkat -</option>
                     <?php 
-                          $tingkat = array('VII','VIII','IX');
+                          $tingkat = array('VII','VIII','IX', 'X', 'XI', 'XII');
                           for ($i = 0; $i <= 2; $i++){
                             if ($_GET[tingkat]==$tingkat[$i]){
                               echo "<option value='".$tingkat[$i]."' selected>Kelas ".$tingkat[$i]."</option>";
@@ -22,8 +22,8 @@
             </form>
 
         </div><!-- /.box-header -->
-        <div class="box-body">
-            <table id="example2" class="table table-bordered table-striped">
+        <div class="box-body table-responsive no-padding">
+            <table id="example2" class="table table-hover">
                 <thead>
                     <tr>
                         <th style='width:20px'>No</th>

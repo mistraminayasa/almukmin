@@ -22,8 +22,8 @@
             </form>
 
         </div><!-- /.box-header -->
-        <div class="box-body">
-            <table id="example" class="table table-bordered table-striped">
+        <div class="box-body table-responsive no-padding">
+            <table id="example" class="table table-hover">
                 <thead>
                     <tr>
                         <th style='width:20px'>No</th>

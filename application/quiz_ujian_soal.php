@@ -2,14 +2,16 @@
 if ($_GET[act]==''){ 
 cek_session_admin();
 ?>
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"><?php if (isset($_GET[kelas]) AND isset($_GET[tahun])){ echo "Jadwal Pelajaran"; }else{ echo "Jadwal Pelajaran Pada Tahun ".date('Y'); } ?></h3>
-                  <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
-                    <input type="hidden" name='view' value='soal'>
-                    <select name='tahun' style='padding:4px'>
-                        <?php 
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">
+                <?php if (isset($_GET[kelas]) AND isset($_GET[tahun])){ echo "Jadwal Pelajaran"; }else{ echo "Jadwal Pelajaran Pada Tahun ".date('Y'); } ?>
+            </h3>
+            <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+                <input type="hidden" name='view' value='soal'>
+                <select name='tahun' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Tahun Akademik -</option>";
                             $tahun = mysql_query("SELECT * FROM rb_tahun_akademik");
                             while ($k = mysql_fetch_array($tahun)){
@@ -20,9 +22,9 @@ cek_session_admin();
                               }
                             }
                         ?>
-                    </select>
-                    <select name='kelas' style='padding:4px'>
-                        <?php 
+                </select>
+                <select name='kelas' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Kelas -</option>";
                             $kelas = mysql_query("SELECT * FROM rb_kelas");
                             while ($k = mysql_fetch_array($kelas)){
@@ -33,16 +35,16 @@ cek_session_admin();
                               }
                             }
                         ?>
-                    </select>
+                </select>
 
-                    <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
-                  </form>
+                <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
+            </form>
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <table id="example" class="table table-hover">
+                <thead>
+                    <tr>
                         <th style='width:20px'>No</th>
                         <th>Jadwal Pelajaran</th>
                         <th>Kelas</th>
@@ -53,10 +55,10 @@ cek_session_admin();
                         <th>Ruangan</th>
                         <th>Total</th>
                         <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                     if (isset($_GET[kelas]) AND isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, b.kode_kurikulum, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -88,16 +90,16 @@ cek_session_admin();
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                <?php 
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+        <?php 
                     if ($_GET[kelas] == '' AND $_GET[tahun] == ''){
                         echo "<center style='padding:60px; color:red'>Silahkan Memilih Tahun akademik dan Kelas Terlebih dahulu...</center>";
                     }
                 ?>
-                </div>
-            </div>
+    </div>
+</div>
 <?php 
 }elseif($_GET[act]=='listsoal'){
 cek_session_guru();
@@ -111,7 +113,7 @@ cek_session_guru();
                     echo "<a class='pull-right btn btn-primary btn-sm' href='index.php?view=soal&act=tambah&jdwl=$_GET[jdwl]&id=$_GET[id]&kd=$_GET[kd]'>Tambahkan Data</a>";
                   }
                 echo "</div>
-              <div class='box-body'>";
+              <div class='box-body table-responsive no-padding'>";
 
                   if (isset($_GET['sukses'])){
                       echo "<div class='alert alert-success alert-dismissible fade in' role='alert'> 
@@ -203,7 +205,7 @@ cek_session_guru();
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Tambah List Ujian dan Quiz Baru</h3>
                 </div>
-              <div class='box-body'>
+              <div class='box-body table-responsive no-padding'>
               <form method='POST' class='form-horizontal' action='' enctype='multipart/form-data'>
                 <div class='col-md-12'>
                   <table class='table table-condensed table-bordered'>
@@ -255,7 +257,7 @@ cek_session_guru();
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Edit List Ujian dan Quiz Baru</h3>
                 </div>
-              <div class='box-body'>
+              <div class='box-body table-responsive no-padding'>
               <form method='POST' class='form-horizontal' action='' enctype='multipart/form-data'>
                 <div class='col-md-12'>
                   <table class='table table-condensed table-bordered'>
@@ -313,7 +315,7 @@ cek_session_guru();
                     <br><small>$so[nama_kelas] - $so[keterangan]</small></h3>
                   <a href='index.php?view=soal&act=tambahessay&jdwl=$_GET[jdwl]&idsoal=$_GET[idsoal]&id=$_GET[id]&kd=$_GET[kd]' class='btn btn-primary btn-sm pull-right'>Tambah Soal Essai</a>
                 </div>
-                <div class='box-body'>";
+                <div class='box-body table-responsive no-padding'>";
 
                   if (isset($_GET['sukses'])){
                       echo "<div class='alert alert-success alert-dismissible fade in' role='alert'> 
@@ -351,7 +353,7 @@ cek_session_guru();
                   <br><small>$so[nama_kelas] - $so[keterangan]</small></h3>
                   <a href='index.php?view=soal&act=tambahobjektif&jdwl=$_GET[jdwl]&idsoal=$_GET[idsoal]&id=$_GET[id]&kd=$_GET[kd]' class='btn btn-primary btn-sm pull-right'>Tambah Soal Objektif </a>
                 </div>
-                <div class='box-body'>
+                <div class='box-body table-responsive no-padding'>
                   <table class='table table-condensed table-bordered'>
                     <tr>
                       <th style='width:40px'>No</th>
@@ -399,7 +401,7 @@ cek_session_guru();
                   <h3 class='box-title'>Semua Daftar Soal Essai</h3>
                   <a class='btn btn-sm btn-success pull-right' href='index.php?view=banksoal&act=lihatessai&mapel=$d[kode_pelajaran]&tingkat=$d[tingkat]'>Bank Soal</a>
                 </div>
-                <div class='box-body'>";
+                <div class='box-body table-responsive no-padding'>";
 
                 if (isset($_GET['sukses'])){
                       echo "<div class='alert alert-success alert-dismissible fade in' role='alert'> 
@@ -485,7 +487,7 @@ cek_session_guru();
                   <h3 class='box-title'>Semua Daftar Soal Objektif</h3>
                   <a class='btn btn-sm btn-success pull-right' href='index.php?view=banksoal&act=lihatobjektif&mapel=$d[kode_pelajaran]&tingkat=$d[tingkat]'>Bank Soal</a>
                   </div>
-                <div class='box-body'>
+                <div class='box-body table-responsive no-padding'>
                 <div class='col-md-12'>
 
                   <form action='' method='POST'>
@@ -494,7 +496,7 @@ cek_session_guru();
                   <input type='hidden' name='idsoal' value='$_GET[idsoal]'>
                   <input type='hidden' name='id' value='$_GET[id]'>
 
-                  <table class='table table-condensed table-hover'>
+                  <table class='table table-hover'>
                       <tbody>
                         <tr><th width='120px' scope='row'>Kelas</th> <td>$d[tingkat]</td></tr>
                         <tr><th scope='row'>Kode Mapel</th>           <td>$d[kode_pelajaran]</td></tr>
@@ -556,7 +558,7 @@ cek_session_guru();
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Data Jawaban Quiz / Ujian Online</b></h3>
                 </div>
-              <div class='box-body'>
+              <div class='box-body table-responsive no-padding'>
 
               <div class='col-md-12'>
               <table class='table table-condensed table-hover'>
@@ -671,9 +673,9 @@ cek_session_guru();
                     echo "<a style='width:150px' class='btn btn-success pull-right' href='' data-toggle='modal' data-target='#nilaiessai'>Nilai Essai : $nilaiessai</a>";
                   }
                 echo "</div>
-                <div class='box-body'>
+                <div class='box-body table-responsive no-padding'>
 
-                  <table class='table table-condensed table-bordered'>
+                  <table class='table table-hover'>
                         <tr>
                           <th style='width:40px'>No</th>
                           <th>Pertanyaan Essai</th>
@@ -703,9 +705,9 @@ cek_session_guru();
                   </h3>
                   <a style='width:150px' class='btn btn-success pull-right' href=''>Nilai Objektif : $hasil</a>
                 </div>
-                <div class='box-body'>
+                <div class='box-body table-responsive no-padding'>
 
-                  <table class='table table-condensed table-bordered'>
+                  <table class='table table-hover'>
                     <tr>
                       <th style='width:40px'>No</th>
                       <th>Pertanyaan Objektif</th>
@@ -747,11 +749,11 @@ cek_session_guru();
 }elseif($_GET[act]=='detailguru'){
 cek_session_guru(); 
 ?>
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"><?php echo "Quiz dan Ujian Online pada $tahunakademik[id_tahun_akademik]" ; ?></h3>
-                  <!-- <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title"><?php echo "Quiz dan Ujian Online pada $tahunakademik[id_tahun_akademik]" ; ?></h3>
+            <!-- <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
                     <input type="hidden" name='view' value='soal'>
                     <input type="hidden" name='act' value='detailguru'>
                     <select name='tahun' style='padding:4px'>
@@ -770,11 +772,11 @@ cek_session_guru();
                     <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
                   </form>-->
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <table id="example1" class="table table-hover">
+                <thead>
+                    <tr>
                         <th style='width:20px'>No</th>
                         <th>Jadwal Pelajaran</th>
                         <th>Kelas</th>
@@ -786,10 +788,10 @@ cek_session_guru();
                         <th>Semester</th>
                         <th>Total</th>
                         <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                     if (isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, b.kode_kurikulum, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -828,25 +830,27 @@ cek_session_guru();
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                </div>
-            </div>
-                                
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+    </div>
+</div>
+
 <?php
 }elseif($_GET[act]=='detailsiswa'){
 cek_session_siswa();
 ?>
-             <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"><?php if (isset($_GET[kelas]) AND isset($_GET[tahun])){ echo "Quiz dan Ujian Online"; }else{ echo "Quiz dan Ujian Online ".date('Y'); } ?></h3>
-                  <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
-                    <input type="hidden" name='view' value='soal'>
-                    <input type="hidden" name='act' value='detailsiswa'>
-                    <select name='tahun' style='padding:4px'>
-                        <?php 
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">
+                <?php if (isset($_GET[kelas]) AND isset($_GET[tahun])){ echo "Quiz dan Ujian Online"; }else{ echo "Quiz dan Ujian Online ".date('Y'); } ?>
+            </h3>
+            <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+                <input type="hidden" name='view' value='soal'>
+                <input type="hidden" name='act' value='detailsiswa'>
+                <select name='tahun' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Tahun Akademik -</option>";
                             $tahun = mysql_query("SELECT * FROM rb_tahun_akademik");
                             while ($k = mysql_fetch_array($tahun)){
@@ -857,15 +861,15 @@ cek_session_siswa();
                               }
                             }
                         ?>
-                    </select>
-                    <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
-                  </form>
+                </select>
+                <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
+            </form>
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <table id="example1" class="table table-hover">
+                <thead>
+                    <tr>
                         <th style='width:20px'>No</th>
                         <th>Kode</th>
                         <th>Jadwal Pelajaran</th>
@@ -877,10 +881,10 @@ cek_session_siswa();
                         <th>Ruangan</th>
                         <th>Semester</th>
                         <th>Total</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                     if (isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, b.kode_kurikulum, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -921,12 +925,12 @@ cek_session_siswa();
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                </div>
-            </div>
-                                
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+    </div>
+</div>
+
 <?php         
 }elseif($_GET[act]=='listsoalsiswa'){
 cek_session_siswa();
@@ -937,7 +941,7 @@ cek_session_siswa();
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Daftar Ujian dan Quiz Online</b></h3>
                 </div>
-              <div class='box-body'>
+              <div class='box-body table-responsive no-padding'>
 
               <div class='col-md-12'>
               <table class='table table-condensed table-hover'>
@@ -951,7 +955,7 @@ cek_session_siswa();
               </div>
 
                 <div class='col-md-12'>
-                  <table id='example1' class='table table-condensed table-bordered table-striped'>
+                  <table id='example1' class='table table-hover'>
                       <thead>
                       <tr>
                         <th style='width:40px'>No</th>
@@ -1002,7 +1006,7 @@ cek_session_siswa();
                 <div class='box-header'>
                   <h3 class='box-title'>Selesai Menjawab Soal Ujian</h3>
                 </div>
-                <div class='box-body'>
+                <div class='box-body table-responsive no-padding'>
                 <div class='col-md-12'>
                   <table class='table table-condensed table-hover'>
                       <tbody>
@@ -1066,8 +1070,8 @@ if ($to[total] >= 1 OR $es[total] >= 1){
                   <h3 class='box-title'>Jawab Soal Essai '<span class='text-info'>$so[kategori_quiz_ujian]</span>' 
                     <br><small>$so[nama_kelas] - $so[keterangan]</small></h3>
                 </div>
-                <div class='box-body'>
-                  <table class='table table-condensed table-bordered table-striped'>
+                <div class='box-body table-responsive no-padding'>
+                  <table class='table table-hover'>
                         <tr bgcolor=#cecece>
                           <th style='width:40px'>No</th>
                           <th>Pertanyaan Essai</th>
@@ -1094,9 +1098,9 @@ if ($to[total] >= 1 OR $es[total] >= 1){
                   <h3 class='box-title'>Soal Objektif '<span class='text-info'>$so[kategori_quiz_ujian]</span>' 
                   <br><small>$so[nama_kelas] - $so[keterangan]</small></h3>
                 </div>
-                <div class='box-body'>
+                <div class='box-body table-responsive no-padding'>
                 <form action='' method='POST'>
-                  <table class='table table-condensed table-bordered'>
+                  <table class='table table-hover'>
                     <tr>
                       <th style='width:40px'>No</th>
                       <th>Pertanyaan Objektif</th>
@@ -1170,9 +1174,9 @@ cek_session_siswa();
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Jawab Soal Essai</h3>
                 </div>
-              <div class='box-body'>
+              <div class='box-body table-responsive no-padding'>
               
-                  <table class='table table-condensed table-bordered'>
+                  <table class='table table-hover'>
                   <tbody>
                     <tr><th width=120px scope='row'>Jawaban</th>           <td><textarea rows='4' class='form-control' name='a'>$n[jawaban_essai]</textarea></td></tr>
                   </tbody>

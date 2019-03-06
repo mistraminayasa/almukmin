@@ -1,15 +1,17 @@
 <?php 
 if ($_GET[act]==''){ 
-?> 
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Pembayaran Keuangan Siswa </h3>
-                  <a target='_BLANK' class='btn btn-sm btn-success pull-right' href='print-keuangan.php?biaya=<?php echo $_GET[biaya]; ?>&kelas=<?php echo $_GET[kelas]; ?>'>Print Laporan</a>
-                  <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
-                    <input type="hidden" name='view' value='laporankeuangan'>
-                    <select name='biaya' style='padding:4px'>
-                        <?php 
+?>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Pembayaran Keuangan Siswa </h3>
+            <a target='_BLANK' class='btn btn-sm btn-success pull-right'
+                href='print-keuangan.php?biaya=<?php echo $_GET[biaya]; ?>&kelas=<?php echo $_GET[kelas]; ?>'>Print
+                Laporan</a>
+            <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+                <input type="hidden" name='view' value='laporankeuangan'>
+                <select name='biaya' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Jenis Biaya -</option>";
                             $biaya = mysql_query("SELECT * FROM rb_keuangan_jenis");
                             while ($k = mysql_fetch_array($biaya)){
@@ -20,9 +22,9 @@ if ($_GET[act]==''){
                               }
                             }
                         ?>
-                    </select>
-                    <select name='kelas' style='padding:4px'>
-                        <?php 
+                </select>
+                <select name='kelas' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Filter Kelas -</option>";
                             $kelas = mysql_query("SELECT * FROM rb_kelas");
                             while ($k = mysql_fetch_array($kelas)){
@@ -33,19 +35,19 @@ if ($_GET[act]==''){
                               }
                             }
                         ?>
-                    </select>
+                </select>
 
-                    <input type="submit" style='margin-top:-4px' class='btn btn-info btn-sm' value='Lihat'>
-                  </form>
+                <input type="submit" style='margin-top:-4px' class='btn btn-info btn-sm' value='Lihat'>
+            </form>
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                <form action='' method='POST'>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <form action='' method='POST'>
                 <input type="hidden" name='kelas' value='<?php echo $_GET[kelas]; ?>'>
                 <?php 
                 $j = mysql_fetch_array(mysql_query("SELECT * FROM `rb_keuangan_jenis` where id_keuangan_jenis='$_GET[biaya]'"));
                 $th = mysql_fetch_array(mysql_query("SELECT * FROM rb_tahun_akademik where aktif='Ya'"));
-                echo "<table id='example1' class='table table-bordered table-striped'>
+                echo "<table id='example1' class='table table-hover'>
                     <thead>
                     <tr><th width='30px'>No</th>
                         <th>NIPD</th>
@@ -86,17 +88,17 @@ if ($_GET[act]==''){
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                <?php 
+                </tbody>
+                </table>
+        </div><!-- /.box-body -->
+        <?php 
                     if ($_GET[kelas] == '' AND $_GET[biaya] == ''){
                         echo "<center style='padding:60px; color:red'>Silahkan Memilih Jenis Biaya dan Kelas Terlebih dahulu...</center>";
                     }
                 ?>
-              </div><!-- /.box -->
-              </form>
-            </div>
+    </div><!-- /.box -->
+    </form>
+</div>
 <?php 
 }
 ?>

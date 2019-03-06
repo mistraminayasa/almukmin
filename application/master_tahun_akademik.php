@@ -1,14 +1,15 @@
-<?php if ($_GET[act]==''){ ?> 
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Data Tahun Akademik </h3>
-                  <?php if($_SESSION[level]!='kepala'){ ?>
-                  <a class='pull-right btn btn-primary btn-sm' href='index.php?view=tahunakademik&act=tambah'>Tambahkan Data</a>
-                  <?php } ?>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                <?php 
+<?php if ($_GET[act]==''){ ?>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Data Tahun Akademik </h3>
+            <?php if($_SESSION[level]!='kepala'){ ?>
+            <a class='pull-right btn btn-primary btn-sm' href='index.php?view=tahunakademik&act=tambah'>Tambahkan
+                Data</a>
+            <?php } ?>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <?php 
                   if (isset($_GET['sukses'])){
                       echo "<div class='alert alert-success alert-dismissible fade in' role='alert'> 
                           <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -21,9 +22,9 @@
                           </div>";
                   }
                 ?>
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+            <table id="example1" class="table table-hover">
+                <thead>
+                    <tr>
                         <th style='width:40px'>No</th>
                         <th>Kode Tahun Akademik</th>
                         <th>Nama Tahun</th>
@@ -32,10 +33,10 @@
                         <?php if($_SESSION[level]!='kepala'){ ?>
                         <th style='width:70px'>Action</th>
                         <?php } ?>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php 
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
                     $tampil = mysql_query("SELECT * FROM rb_tahun_akademik ORDER BY id_tahun_akademik DESC");
                     $no = 1;
                     while($r=mysql_fetch_array($tampil)){
@@ -59,11 +60,11 @@
                       }
 
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div>
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+</div>
 <?php 
 }elseif($_GET[act]=='edit'){
     if (isset($_POST[update])){

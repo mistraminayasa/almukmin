@@ -26,15 +26,16 @@ if ($_GET[act]==''){
       $tanggal = $ex[2];
       if (substr($tanggal,0,1) == '0'){ $tgle = substr($tanggal,1,1); }else{ $tgle = substr($tanggal,0,2); }
       if (substr($bulane,0,1) == '0'){ $blnee = substr($bulane,1,1); }else{ $blnee = substr($bulane,0,2); }
-?> 
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Data Absensi Guru Pada : <b style='color:red'><?php echo tgl_indo("$filtertgl")."</b>"; ?> </h3>
-                  <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
-                    <input type="hidden" name='view' value='absenguru'>
-                    <select name='tahun' style='padding:4px'>
-                        <?php 
+?>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Data Absensi Guru Pada : <b
+                    style='color:red'><?php echo tgl_indo("$filtertgl")."</b>"; ?> </h3>
+            <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+                <input type="hidden" name='view' value='absenguru'>
+                <select name='tahun' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Tahun Akademik -</option>";
                             $tahun = mysql_query("SELECT * FROM rb_tahun_akademik");
                             while ($k = mysql_fetch_array($tahun)){
@@ -45,9 +46,9 @@ if ($_GET[act]==''){
                               }
                             }
                         ?>
-                    </select>
-                    <select name='kelas' style='padding:4px'>
-                        <?php 
+                </select>
+                <select name='kelas' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Kelas -</option>";
                             $kelas = mysql_query("SELECT * FROM rb_kelas");
                             while ($k = mysql_fetch_array($kelas)){
@@ -58,12 +59,12 @@ if ($_GET[act]==''){
                               }
                             }
                         ?>
-                    </select>
-                    <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
-                  </form>
-                  <div style="clear:both"></div>
+                </select>
+                <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
+            </form>
+            <div style="clear:both"></div>
 
-                  <?php 
+            <?php 
                   echo "<div class='col-md-7 pull-right' style='margin:5px -14px 5px 0px'>
                   <form action='index.php?view=absenguru' method='POST' style='margin-bottom:5px'>
                           <div class='col-xs-3'><select name='tgl' class='form-control'><option selected>- Tanggal -</option>";
@@ -96,25 +97,25 @@ if ($_GET[act]==''){
                                   <input name='lihat' class='btn btn-primary' type='submit' value='Lihat Absen'>
                         </form></div>";
                   ?>
-                </div><!-- /.box-header -->
-                <form action='' method="POST">
-                <div class="box-body">
-                  <table id="example" class="table table-bordered table-striped">
+        </div><!-- /.box-header -->
+        <form action='' method="POST">
+            <div class="box-body table-responsive no-padding">
+                <table id="example" class="table table-hover">
                     <thead>
-                      <tr>
-                        <th style='width:20px'>No</th>
-                        <th>Jadwal Pelajaran</th>
-                        <th>Kelas</th>
-                        <th>Guru</th>
-                        <th>Hari</th>
-                        <th>Mulai</th>
-                        <th>Selesai</th>
-                        <th>Ruangan</th>
-                        <th width='90px'>Kehadiran</th>
-                      </tr>
+                        <tr>
+                            <th style='width:20px'>No</th>
+                            <th>Jadwal Pelajaran</th>
+                            <th>Kelas</th>
+                            <th>Guru</th>
+                            <th>Hari</th>
+                            <th>Mulai</th>
+                            <th>Selesai</th>
+                            <th>Ruangan</th>
+                            <th width='90px'>Kehadiran</th>
+                        </tr>
                     </thead>
                     <tbody>
-                  <?php
+                        <?php
                     if (isset($_GET[kelas]) AND isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, b.kode_kurikulum, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -166,23 +167,23 @@ if ($_GET[act]==''){
                       }
                   ?>
                     </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                <?php 
+                </table>
+            </div><!-- /.box-body -->
+            <?php 
                     if ($_GET[kelas] == '' AND $_GET[tahun] == ''){
                         echo "<center style='padding:60px; color:red'>Silahkan Memilih Tahun akademik dan Kelas Terlebih dahulu...</center>";
                     }
                 ?>
-                <div class='box-footer'>
-                    <?php 
+            <div class='box-footer'>
+                <?php 
                       echo "<input type='hidden' name='filtertgl' value='$filtertgl'>";                          
                     ?>
-                    <button type='submit' name='simpan' class='btn btn-info pull-right'>Simpan Absensi</button>
-                </div>
-             
-              </form>
-              </div><!-- /.box -->
+                <button type='submit' name='simpan' class='btn btn-info pull-right'>Simpan Absensi</button>
             </div>
+
+        </form>
+    </div><!-- /.box -->
+</div>
 <?php 
     if (isset($_POST[simpan])){
       $jml_data = count($_POST[nip]);

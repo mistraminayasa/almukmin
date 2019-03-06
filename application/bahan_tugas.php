@@ -2,14 +2,16 @@
 if ($_GET[act]==''){ 
 cek_session_admin();
 ?>
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"><?php if (isset($_GET[kelas]) AND isset($_GET[tahun])){ echo "Jadwal Pelajaran"; }else{ echo "Jadwal Pelajaran Pada Tahun ".date('Y'); } ?></h3>
-                  <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
-                    <input type="hidden" name='view' value='bahantugas'>
-                    <select name='tahun' style='padding:4px'>
-                        <?php 
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">
+                <?php if (isset($_GET[kelas]) AND isset($_GET[tahun])){ echo "Jadwal Pelajaran"; }else{ echo "Jadwal Pelajaran Pada Tahun ".date('Y'); } ?>
+            </h3>
+            <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+                <input type="hidden" name='view' value='bahantugas'>
+                <select name='tahun' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Tahun Akademik -</option>";
                             $tahun = mysql_query("SELECT * FROM rb_tahun_akademik");
                             while ($k = mysql_fetch_array($tahun)){
@@ -20,9 +22,9 @@ cek_session_admin();
                               }
                             }
                         ?>
-                    </select>
-                    <select name='kelas' style='padding:4px'>
-                        <?php 
+                </select>
+                <select name='kelas' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Kelas -</option>";
                             $kelas = mysql_query("SELECT * FROM rb_kelas");
                             while ($k = mysql_fetch_array($kelas)){
@@ -33,15 +35,15 @@ cek_session_admin();
                               }
                             }
                         ?>
-                    </select>
-                    <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
-                  </form>
+                </select>
+                <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
+            </form>
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <table id="example" class="table table-hover">
+                <thead>
+                    <tr>
                         <th style='width:20px'>No</th>
                         <th>Jadwal Pelajaran</th>
                         <th>Kelas</th>
@@ -52,10 +54,10 @@ cek_session_admin();
                         <th>Ruangan</th>
                         <th>Total</th>
                         <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                     if (isset($_GET[kelas]) AND isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, b.kode_kurikulum, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -86,16 +88,16 @@ cek_session_admin();
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                <?php 
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+        <?php 
                     if ($_GET[kelas] == '' AND $_GET[tahun] == ''){
                         echo "<center style='padding:60px; color:red'>Silahkan Memilih Tahun akademik dan Kelas Terlebih dahulu...</center>";
                     }
                 ?>
-                </div>
-            </div>
+    </div>
+</div>
 <?php 
 }elseif($_GET[act]=='listbahantugas'){
 cek_session_siswa();
@@ -271,8 +273,8 @@ if (isset($_POST[tambah])){
                     <tr><th scope='row'>File</th>             <td><div style='position:relative;''>
                                                                           <a class='btn btn-primary' href='javascript:;'>
                                                                             <i class='fa fa-search'></i> Cari File Bahan atau Tugas..."; ?>
-                                                                            <input type='file' class='files' name='c' onchange='$("#upload-file-info").html($(this).val());'>
-                                                                          <?php echo "</a> <span style='width:155px' class='label label-info' id='upload-file-info'></span>
+<input type='file' class='files' name='c' onchange='$("#upload-file-info").html($(this).val());'>
+<?php echo "</a> <span style='width:155px' class='label label-info' id='upload-file-info'></span>
                                                                         </div>
                     </td></tr>
                     <tr><th scope='row'>Waktu Mulai</th>      <td><input type='text' class='form-control' value='".date("Y-m-d H:i:s")."' name='d'></td></tr>
@@ -360,8 +362,8 @@ $edit = mysql_query("SELECT * FROM rb_elearning a JOIN rb_kategori_elearning b O
                     <tr><th scope='row'>Ganti File</th>             <td><div style='position:relative;''>
                                                                           <a class='btn btn-primary' href='javascript:;'>
                                                                             <i class='fa fa-search'></i> <b>Ganti File :</b> $s[file_upload]"; ?>
-                                                                            <input type='file' class='files' name='c' onchange='$("#upload-file-info").html($(this).val());'>
-                                                                          <?php echo "</a> <span style='width:155px' class='label label-info' id='upload-file-info'></span>
+<input type='file' class='files' name='c' onchange='$("#upload-file-info").html($(this).val());'>
+<?php echo "</a> <span style='width:155px' class='label label-info' id='upload-file-info'></span>
                                                                         </div>
                     </td></tr>
                     <tr><th scope='row'>Waktu Mulai</th>      <td><input type='text' class='form-control' value='$s[tanggal_tugas]' name='d'></td></tr>
@@ -383,11 +385,11 @@ $edit = mysql_query("SELECT * FROM rb_elearning a JOIN rb_kategori_elearning b O
 }elseif($_GET[act]=='listbahantugasguru'){ 
 cek_session_guru();
 ?>
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"><?php echo "Bahan dan Tugas pada $tahunakademik[id_tahun_akademik]" ; ?></h3>
-                  <!-- <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title"><?php echo "Bahan dan Tugas pada $tahunakademik[id_tahun_akademik]" ; ?></h3>
+            <!-- <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
                     <input type="hidden" name='view' value='bahantugas'>
                     <input type="hidden" name='act' value='listbahantugasguru'>
                     <select name='tahun' style='padding:4px'>
@@ -406,11 +408,11 @@ cek_session_guru();
                     <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
                   </form>-->
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
                         <th style='width:20px'>No</th>
                         <th>Jadwal Pelajaran</th>
                         <th>Kelas</th>
@@ -422,10 +424,10 @@ cek_session_guru();
                         <th>Semester</th>
                         <th>Total</th>
                         <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                     if (isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, b.kode_kurikulum, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -463,25 +465,27 @@ cek_session_guru();
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                </div>
-            </div>
-                                
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+    </div>
+</div>
+
 <?php
 }elseif($_GET[act]=='listbahantugassiswa'){ 
 cek_session_siswa();
 ?>
-             <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"><?php if (isset($_GET[kelas]) AND isset($_GET[tahun])){ echo "Bahan dan Tugas"; }else{ echo "Bahan dan Tugas ".date('Y'); } ?></h3>
-                  <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
-                    <input type="hidden" name='view' value='bahantugas'>
-                    <input type="hidden" name='act' value='listbahantugassiswa'>
-                    <select name='tahun' style='padding:4px'>
-                        <?php 
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">
+                <?php if (isset($_GET[kelas]) AND isset($_GET[tahun])){ echo "Bahan dan Tugas"; }else{ echo "Bahan dan Tugas ".date('Y'); } ?>
+            </h3>
+            <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+                <input type="hidden" name='view' value='bahantugas'>
+                <input type="hidden" name='act' value='listbahantugassiswa'>
+                <select name='tahun' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Tahun Akademik -</option>";
                             $tahun = mysql_query("SELECT * FROM rb_tahun_akademik");
                             while ($k = mysql_fetch_array($tahun)){
@@ -492,15 +496,15 @@ cek_session_siswa();
                               }
                             }
                         ?>
-                    </select>
-                    <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
-                  </form>
+                </select>
+                <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
+            </form>
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
                         <th style='width:20px'>No</th>
                         <th>Kode</th>
                         <th>Jadwal Pelajaran</th>
@@ -512,10 +516,10 @@ cek_session_siswa();
                         <th>Ruangan</th>
                         <th>Semester</th>
                         <th>Total</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                     if (isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, b.kode_kurikulum, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -556,12 +560,12 @@ cek_session_siswa();
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                </div>
-            </div>
-                                
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+    </div>
+</div>
+
 <?php
 }elseif($_GET[act]=='kirim'){
 cek_session_siswa();
@@ -604,8 +608,8 @@ $cek = mysql_fetch_array(mysql_query("SELECT count(*) as total FROM rb_elearning
                     <tr><th width=120px scope='row'>Nama File</th>             <td><div style='position:relative;''>
                                                                           <a class='btn btn-primary' href='javascript:;'>
                                                                             <span class='glyphicon glyphicon-search'></span> Cari File Tugas yang akan dikirim..."; ?>
-                                                                            <input type='file' class='files' name='c' onchange='$("#upload-file-info").html($(this).val());'>
-                                                                          <?php echo "</a> <span style='width:155px' class='label label-info' id='upload-file-info'></span>
+<input type='file' class='files' name='c' onchange='$("#upload-file-info").html($(this).val());'>
+<?php echo "</a> <span style='width:155px' class='label label-info' id='upload-file-info'></span>
                                                                         </div>
                     </td></tr>
                     <tr><th scope='row'>Keterangan</th>       <td><textarea rows='5' class='form-control' name='a'></textarea></td></tr>

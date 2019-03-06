@@ -1,16 +1,17 @@
-<?php if ($_GET[act]==''){ ?> 
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Semua Data Guru </h3>
-                  <?php if($_SESSION[level]!='kepala'){ ?>
-                  <a class='pull-right btn btn-primary btn-sm' href='index.php?view=guru&act=tambahguru'>Tambahkan Data Guru</a>
-                  <?php } ?>
-                </div><!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-                  <table id="example1" class="table table-hover">
-                    <thead>
-                      <tr>
+<?php if ($_GET[act]==''){ ?>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Semua Data Guru </h3>
+            <?php if($_SESSION[level]!='kepala'){ ?>
+            <a class='pull-right btn btn-primary btn-sm' href='index.php?view=guru&act=tambahguru'>Tambahkan Data
+                Guru</a>
+            <?php } ?>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <table id="example1" class="table table-hover">
+                <thead>
+                    <tr>
                         <th>No</th>
                         <th>NIP</th>
                         <th>Nama Lengkap</th>
@@ -18,10 +19,10 @@
                         <th>Status Pegawai</th>
                         <th>Jenis PTK</th>
                         <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php 
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
                     $tampil = mysql_query("SELECT * FROM rb_guru a 
                                           LEFT JOIN rb_jenis_kelamin b ON a.id_jenis_kelamin=b.id_jenis_kelamin 
                                             LEFT JOIN rb_status_kepegawaian c ON a.id_status_kepegawaian=c.id_status_kepegawaian 
@@ -57,11 +58,11 @@
                       }
 
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div>
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+</div>
 <?php 
 }elseif($_GET[act]=='tambahguru'){
   if (isset($_POST[tambah])){
@@ -172,8 +173,8 @@
                     <tr><th scope='row'>Foto</th>             <td><div style='position:relative;''>
                                                                           <a class='btn btn-primary' href='javascript:;'>
                                                                             <span class='glyphicon glyphicon-search'></span> Browse..."; ?>
-                                                                            <input type='file' class='files' name='ax' onchange='$("#upload-file-info").html($(this).val());'>
-                                                                          <?php echo "</a> <span style='width:155px' class='label label-info' id='upload-file-info'></span>
+<input type='file' class='files' name='ax' onchange='$("#upload-file-info").html($(this).val());'>
+<?php echo "</a> <span style='width:155px' class='label label-info' id='upload-file-info'></span>
                                                                         </div>
                     </td></tr>
                   </tbody>
@@ -453,8 +454,8 @@
                     <tr><th scope='row'>Ganti Foto</th>             <td><div style='position:relative;''>
                                                                           <a class='btn btn-primary' href='javascript:;'>
                                                                             <span class='glyphicon glyphicon-search'></span> Browse..."; ?>
-                                                                            <input type='file' class='files' name='ax' onchange='$("#upload-file-info").html($(this).val());'>
-                                                                          <?php echo "</a> <span style='width:155px' class='label label-info' id='upload-file-info'></span>
+<input type='file' class='files' name='ax' onchange='$("#upload-file-info").html($(this).val());'>
+<?php echo "</a> <span style='width:155px' class='label label-info' id='upload-file-info'></span>
                                                                         </div>
                     </td></tr>
                   </tbody>
