@@ -1,15 +1,15 @@
 <?php 
 if ($_GET[act]==''){ 
 ?>
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Data Ledger Mata Pelajaran pada <?php echo $tahunakademik[id_tahun_akademik]; ?></h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Data Ledger Mata Pelajaran pada <?php echo $tahunakademik[id_tahun_akademik]; ?></h3>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <table id="example" class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
                         <th style='width:20px'>No</th>
                         <th>Jadwal Pelajaran</th>
                         <th>Kelas</th>
@@ -25,10 +25,10 @@ if ($_GET[act]==''){
                           }
                         }  
                         ?>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, b.kode_kurikulum, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
                                               JOIN rb_guru c ON a.nip=c.nip 
@@ -54,12 +54,12 @@ if ($_GET[act]==''){
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                </div>
-            </div>
-                                
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+    </div>
+</div>
+
 <?php 
 }
 elseif($_GET[act]=='listsiswasikap'){
@@ -105,7 +105,7 @@ elseif($_GET[act]=='listsiswasikap'){
                   <a target='_BLANK' class='btn btn-sm btn-primary pull-right' href='export-ledger-mapel.php?jdwl=$_GET[jdwl]&kd=$_GET[kd]&id=$_GET[id]&tahun=$_GET[tahun]&id=$_GET[id]&kd=$_GET[kd]'>Export Excel Ledger Mapel</a>
                 </div>
             
-        <div class='box-body'>
+        <div class='box-body table-responsive no-padding'>
               <div class='col-md-12'>
               <table class='table table-condensed table-hover'>
                   <tbody>

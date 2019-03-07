@@ -1,14 +1,14 @@
 <?php 
 if ($_GET[act]==''){ 
 ?>
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Data Ledger Kelas</h3>
-                  <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
-                    <input type="hidden" name='view' value='ledgerkelas'>
-                    <select name='tahun' style='padding:4px'>
-                        <?php 
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Data Ledger Kelas</h3>
+            <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+                <input type="hidden" name='view' value='ledgerkelas'>
+                <select name='tahun' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Tahun Akademik -</option>";
                             $tahun = mysql_query("SELECT * FROM rb_tahun_akademik");
                             while ($k = mysql_fetch_array($tahun)){
@@ -19,9 +19,9 @@ if ($_GET[act]==''){
                               }
                             }
                         ?>
-                    </select>
-                    <select name='kelas' style='padding:4px'>
-                        <?php 
+                </select>
+                <select name='kelas' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Kelas -</option>";
                             $kelas = mysql_query("SELECT * FROM rb_kelas");
                             while ($k = mysql_fetch_array($kelas)){
@@ -32,21 +32,21 @@ if ($_GET[act]==''){
                               }
                             }
                         ?>
-                    </select>
-                    <input type="submit" style='margin-top:-4px' class='btn btn-primary btn-sm' value='Lihat'>
-                    <?php
+                </select>
+                <input type="submit" style='margin-top:-4px' class='btn btn-primary btn-sm' value='Lihat'>
+                <?php
                         if (isset($_GET[tahun]) AND isset($_GET[kelas])){ 
                           echo "<a target='_BLANK' href='export-ledger-kelas.php?tahun=$_GET[tahun]&kelas=$_GET[kelas]' style='margin-top:-4px' class='btn btn-success btn-sm'>Export Excel Ledger Kelas</a>";
                         }
                     ?>
-                  </form>
+            </form>
 
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <table id="example" class="table table-hover">
+                <thead>
+                    <tr>
                         <th style='width:20px'>No</th>
                         <th>Jadwal Pelajaran</th>
                         <th>Kelas</th>
@@ -62,10 +62,10 @@ if ($_GET[act]==''){
                           }
                         }  
                         ?>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                     if (isset($_GET[kelas]) AND isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, b.kode_kurikulum, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -98,17 +98,17 @@ if ($_GET[act]==''){
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                <?php 
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+        <?php 
                     if ($_GET[kelas] == '' AND $_GET[tahun] == ''){
                         echo "<center style='padding:60px; color:red'>Silahkan Memilih Tahun akademik dan Kelas Terlebih dahulu...</center>";
                     }
                 ?>
-                </div>
-            </div>
-                                
+    </div>
+</div>
+
 <?php 
 }
 ?>

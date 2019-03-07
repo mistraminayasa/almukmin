@@ -119,7 +119,7 @@ cek_session_siswa();
                     echo "<a class='pull-right btn btn-primary btn-sm' href='index.php?view=bahantugas&act=tambah&jdwl=$_GET[jdwl]&id=$_GET[id]&kd=$_GET[kd]'>Tambahkan Data</a>";
                   }
                 echo "</div>
-              <div class='box-body'>";
+              <div class='box-body table-responsive no-padding'>";
 
                   if (isset($_GET['sukses'])){
                       echo "<div class='alert alert-success alert-dismissible fade in' role='alert'> 
@@ -256,10 +256,10 @@ if (isset($_POST[tambah])){
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Tambah Bahan dan Tugas</h3>
                 </div>
-              <div class='box-body'>
+              <div class='box-body table-responsive no-padding'>
               <form method='POST' class='form-horizontal' action='' enctype='multipart/form-data'>
                 <div class='col-md-12'>
-                  <table class='table table-condensed table-bordered'>
+                  <table class='table table-hover'>
                   <tbody>
                     <tr><th width='120px' scope='row'>Kategori</th> <td><select class='form-control' name='a'> 
                              <option value='0' selected>- Pilih Kategori Tugas -</option>"; 
@@ -341,10 +341,10 @@ $edit = mysql_query("SELECT * FROM rb_elearning a JOIN rb_kategori_elearning b O
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Edit Bahan dan Tugas</h3>
                 </div>
-              <div class='box-body'>
+              <div class='box-body table-responsive no-padding'>
               <form method='POST' class='form-horizontal' action='' enctype='multipart/form-data'>
                 <div class='col-md-12'>
-                  <table class='table table-condensed table-bordered'>
+                  <table class='table table-hover>
                   <tbody>
                     <tr><th width='120px' scope='row'>Kategori</th> <td><select class='form-control' name='a'> 
                              <option value='0' selected>- Pilih Kategori Tugas -</option>"; 
@@ -409,8 +409,8 @@ cek_session_guru();
                   </form>-->
 
         </div><!-- /.box-header -->
-        <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
+        <div class="box-body table-responsive no-padding">
+            <table id="example1" class="table table-hover">
                 <thead>
                     <tr>
                         <th style='width:20px'>No</th>
@@ -501,8 +501,8 @@ cek_session_siswa();
             </form>
 
         </div><!-- /.box-header -->
-        <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
+        <div class="box-body table-responsive no-padding">
+            <table id="example1" class="table table-hover">
                 <thead>
                     <tr>
                         <th style='width:20px'>No</th>
@@ -600,10 +600,10 @@ $cek = mysql_fetch_array(mysql_query("SELECT count(*) as total FROM rb_elearning
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Kirimkan Tugas</h3>
                 </div>
-              <div class='box-body'>
+              <div class='bbox-body table-responsive no-padding'>
               <form method='POST' class='form-horizontal' action='' enctype='multipart/form-data'>
                 <div class='col-md-12'>
-                  <table class='table table-condensed table-bordered'>
+                  <table class='table table-hover'>
                   <tbody>
                     <tr><th width=120px scope='row'>Nama File</th>             <td><div style='position:relative;''>
                                                                           <a class='btn btn-primary' href='javascript:;'>
@@ -650,8 +650,8 @@ cek_session_guru();
                 </table>
                 </div>
 
-                <div class='box-body'>
-                <table class='table table-bordered table-striped'>
+                <div class='box-body table-responsive no-padding'>
+                <table class='table table-hover'>
                       <tr>
                         <th style='width:40px'>No</th>
                         <th>NISN</th>
@@ -689,7 +689,7 @@ cek_session_guru();
                 <div class='box-header with-border'>
                   <h3 class='box-title'>List Upload Bahan dan Tugas</b></h3>
                 </div>
-              <div class='box-body'>
+              <div class='box-body table-responsive no-padding'>
 
               <div class='col-md-12'>
               <table class='table table-condensed table-hover'>

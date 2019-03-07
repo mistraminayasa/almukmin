@@ -2,14 +2,14 @@
   $k = mysql_fetch_array(mysql_query("SELECT * FROM rb_kelas where kode_kelas='$_GET[id]'"));
   $t = mysql_fetch_array(mysql_query("SELECT * FROM rb_tahun_akademik where id_tahun_akademik='$_GET[tahun]'"));
 ?>
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Cetak Raport Semester Siswa <?php echo $_GET[tahun]; ?></h3>
-                  <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
-                    <input type="hidden" name='view' value='raportcetak'>
-                    <select name='tahun' style='padding:4px'>
-                        <?php 
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Cetak Raport Semester Siswa <?php echo $_GET[tahun]; ?></h3>
+            <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+                <input type="hidden" name='view' value='raportcetak'>
+                <select name='tahun' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Tahun Akademik -</option>";
                             $tahun = mysql_query("SELECT * FROM rb_tahun_akademik");
                             while ($k = mysql_fetch_array($tahun)){
@@ -20,9 +20,9 @@
                               }
                             }
                         ?>
-                    </select>
-                    <select name='id' style='padding:4px'>
-                        <?php 
+                </select>
+                <select name='id' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Filter Kelas -</option>";
                             $kelas = mysql_query("SELECT * FROM rb_kelas");
                             while ($k = mysql_fetch_array($kelas)){
@@ -33,14 +33,14 @@
                               }
                             }
                         ?>
-                    </select>
-                    <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
-                  </form>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                    <table id="example" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+                </select>
+                <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
+            </form>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <table id="example" class="table table-hover">
+                <thead>
+                    <tr>
                         <th>No</th>
                         <th>NIPD</th>
                         <th>NISN</th>
@@ -48,10 +48,10 @@
                         <th>Jenis Kelamin</th>
                         <th>Ranking</th>
                         <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php 
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
                     $tampil = mysql_query("SELECT * FROM rb_siswa a
                                               JOIN rb_jenis_kelamin b ON a.id_jenis_kelamin=b.id_jenis_kelamin 
                                                 where a.kode_kelas='$_GET[id]' ORDER BY a.id_siswa");
@@ -95,15 +95,15 @@
                         $ii++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                <?php 
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+        <?php 
                     if ($_GET[kelas] == '' AND $_GET[tahun] == ''){
                         echo "<center style='padding:60px; color:red'>Silahkan Memilih Tahun akademik dan Kelas Terlebih dahulu...</center>";
                     }
                 ?>
-              </div>
-            </div>
+    </div>
+</div>
 
 <?php } ?>

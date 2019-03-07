@@ -9,17 +9,35 @@ $d = mysql_fetch_array(mysql_query("SELECT * FROM rb_kelas where kode_kelas='$_G
 if (substr($_GET[tahun],4,5)=='1'){ $semester = 'GANJIL'; }else{ $semester = 'GENAP'; }
 ?>
 <html>
+
 <head>
-<title>Data Siswa Kelas <?php echo $_GET[kelas]; ?></title>
-<link rel="stylesheet" href="bootstrap/css/printer.css">
+    <title>Data Siswa Kelas <?php echo $_GET[kelas]; ?></title>
+    <link rel="stylesheet" href="bootstrap/css/printer.css">
 </head>
+
 <body onload="window.print()">
-<center><table border=0>
-  <tr><td colspan='21'><center><h1>SMA NEGERI 1 KURIK <br><span style='font-size:12px'>Jl. Ahmad Yani, Kab. Marauke, Papua</span></h1></center></td></tr>
-  <tr><td colspan='21'><center>LEDGER NILAI SEMESTER <?php echo $semester; ?></center></td></tr>
-  <tr><td colspan='21'><center><?php echo "<span style='text-transform:uppercase'>$d[nama_kelas]</span>"; ?></center></td></tr>
-</table></center><br>
-<?php
+    <center>
+        <table border=0>
+            <tr>
+                <td colspan='21'>
+                    <center>
+                        <h1> Pondok Pesantren Al-Mu'minien <br><span style='font-size:12px'>Jl. </span></h1>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='21'>
+                    <center>LEDGER NILAI SEMESTER <?php echo $semester; ?></center>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='21'>
+                    <center><?php echo "<span style='text-transform:uppercase'>$d[nama_kelas]</span>"; ?></center>
+                </td>
+            </tr>
+        </table>
+    </center><br>
+    <?php
             echo " <table width='100%' border=1>
                     <thead>
                       <tr>
@@ -111,7 +129,8 @@ if (substr($_GET[tahun],4,5)=='1'){ $semester = 'GANJIL'; }else{ $semester = 'GE
                       }
 
                   ?>
-                    </tbody>
-                  </table>
+    </tbody>
+    </table>
 </body>
+
 </html>

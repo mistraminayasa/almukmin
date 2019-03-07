@@ -1,4 +1,3 @@
-
 <?php 
 if ($_GET[act]==''){ 
     if (isset($_POST[simpan])){
@@ -14,15 +13,15 @@ if ($_GET[act]==''){
         mysql_query("DELETE FROM rb_nilai_extrakulikuler where id_nilai_extrakulikuler='$_GET[delete]'");
         echo "<script>document.location='index.php?view=extrakulikuler&tahun=$_GET[tahun]&kelas=$_GET[kelas]#$_POST[nisn]';</script>";
     }
-?> 
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Input Extrakulikuler Siswa</h3>
-                  <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
-                    <input type="hidden" name='view' value='extrakulikuler'>
-                    <select name='tahun' style='padding:4px'>
-                        <?php 
+?>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Input Extrakulikuler Siswa</h3>
+            <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+                <input type="hidden" name='view' value='extrakulikuler'>
+                <select name='tahun' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Pilih Tahun Akademik -</option>";
                             $tahun = mysql_query("SELECT * FROM rb_tahun_akademik");
                             while ($k = mysql_fetch_array($tahun)){
@@ -33,9 +32,9 @@ if ($_GET[act]==''){
                               }
                             }
                         ?>
-                    </select>
-                    <select name='kelas' style='padding:4px'>
-                        <?php 
+                </select>
+                <select name='kelas' style='padding:4px'>
+                    <?php 
                             echo "<option value=''>- Filter Kelas -</option>";
                             $kelas = mysql_query("SELECT * FROM rb_kelas");
                             while ($k = mysql_fetch_array($kelas)){
@@ -46,13 +45,13 @@ if ($_GET[act]==''){
                               }
                             }
                         ?>
-                    </select>
-                    <input type="submit" style='margin-top:-4px' class='btn btn-info btn-sm' value='Lihat'>
-                  </form>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                <?php 
-                  echo "<table id='example' class='table table-bordered table-striped'>
+                </select>
+                <input type="submit" style='margin-top:-4px' class='btn btn-info btn-sm' value='Lihat'>
+            </form>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <?php 
+                  echo "<table id='example' class='table table-hover'>
                     <thead>
                       <tr><th rowspan='2'>No</th>
                         <th>NISN</th>
@@ -125,15 +124,15 @@ if ($_GET[act]==''){
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                <?php 
+            </tbody>
+            </table>
+        </div><!-- /.box-body -->
+        <?php 
                     if ($_GET[kelas] == '' AND $_GET[tahun] == ''){
                         echo "<center style='padding:60px; color:red'>Silahkan Memilih Tahun akademik dan Kelas Terlebih dahulu...</center>";
                     }
                 ?>
-              </div><!-- /.box -->
-              
-            </div>
+    </div><!-- /.box -->
+
+</div>
 <?php }  ?>

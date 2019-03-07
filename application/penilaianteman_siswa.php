@@ -1,28 +1,28 @@
 <?php 
 if ($_GET[act]==''){ 
 ?>
-            <div class="col-xs-12">  
-              <div class="box">
-              <form action='' method='POST'>
-                <div class="box-header">
-                  <h3 class="box-title">Semua Data Teman Kelas anda </h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table class="table table-bordered table-striped">
+<div class="col-xs-12">
+    <div class="box">
+        <form action='' method='POST'>
+            <div class="box-header">
+                <h3 class="box-title">Semua Data Teman Kelas anda </h3>
+            </div><!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
                     <thead>
-                      <tr>
-                        <th style='width:40px'>No</th>
-                        <th>NIPD</th>
-                        <th>NISN</th>
-                        <th>Nama Siswa</th>
-                        <th>Angkatan</th>
-                        <th>Jurusan</th>
-                        <th>Kelas</th>
-                        <th width='135px'></th>
-                      </tr>
+                        <tr>
+                            <th style='width:40px'>No</th>
+                            <th>NIPD</th>
+                            <th>NISN</th>
+                            <th>Nama Siswa</th>
+                            <th>Angkatan</th>
+                            <th>Jurusan</th>
+                            <th>Kelas</th>
+                            <th width='135px'></th>
+                        </tr>
                     </thead>
                     <tbody>
-                  <?php 
+                        <?php 
                     $cs = mysql_fetch_array(mysql_query("SELECT * FROM rb_siswa where nisn='$_SESSION[id]'"));
                     $tampil = mysql_query("SELECT * FROM rb_siswa a LEFT JOIN rb_kelas b ON a.kode_kelas=b.kode_kelas 
                                               LEFT JOIN rb_jenis_kelamin c ON a.id_jenis_kelamin=c.id_jenis_kelamin 
@@ -43,11 +43,11 @@ if ($_GET[act]==''){
                       }
                   ?>
                     </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-              </form>
-              </div><!-- /.box -->
-            </div>
+                </table>
+            </div><!-- /.box-body -->
+        </form>
+    </div><!-- /.box -->
+</div>
 
 
 <?php 
@@ -72,15 +72,15 @@ if ($_GET[act]==''){
        echo "<script>window.alert('Sukses Simpan Jawaban Penilaian Teman...');
                 window.location='index.php?view=penilaiantemansiswa&act=pertanyaan&nisn=".$_POST[nisnteman]."'</script>";
     }
-?> 
-            <div class="col-xs-12">  
-              <div class="box">
-              <form action='' method='POST'>
-                <div class="box-header">
-                  <h3 class="box-title">Data Pertanyan Penilaian Teman </h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <?php
+?>
+<div class="col-xs-12">
+    <div class="box">
+        <form action='' method='POST'>
+            <div class="box-header">
+                <h3 class="box-title">Data Pertanyan Penilaian Teman </h3>
+            </div><!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <?php
                       echo "<input type='hidden' value='$_GET[nisn]' name='nisnteman'>";
                       $t = mysql_fetch_array(mysql_query("SELECT * FROM rb_siswa where nisn='$_GET[nisn]'"));
                       $tt = mysql_fetch_array(mysql_query("SELECT * FROM rb_siswa where nisn='$_SESSION[id]'"));
@@ -93,16 +93,16 @@ if ($_GET[act]==''){
                             </table>
                             </div>";
                   ?>
-                  <table id="example3" class="table table-bordered table-striped">
+                <table id="example3" class="table table-bordered table-striped table-hover">
                     <thead>
-                      <tr>
-                        <th style='width:20px'>No</th>
-                        <th>Pertanyaan</th>
-                      </tr>
+                        <tr>
+                            <th style='width:20px'>No</th>
+                            <th>Pertanyaan</th>
+                        </tr>
                     </thead>
                     <tbody>
 
-                  <?php 
+                        <?php 
                     $tampil = mysql_query("SELECT * FROM rb_pertanyaan_penilaian where status='teman' ORDER BY id_pertanyaan_penilaian DESC");
                     $no = 1;
                     while($r=mysql_fetch_array($tampil)){
@@ -120,10 +120,11 @@ if ($_GET[act]==''){
                       }
                   ?>
                     </tbody>
-                  </table>
-                  <input type="submit" name='submit' value='Simpan Semua Jawaban' class='pull-left btn btn-primary btn-sm'>
-                </div><!-- /.box-body -->
-              </form>
-              </div><!-- /.box -->
-            </div>
+                </table>
+                <input type="submit" name='submit' value='Simpan Semua Jawaban'
+                    class='pull-left btn btn-primary btn-sm'>
+            </div><!-- /.box-body -->
+        </form>
+    </div><!-- /.box -->
+</div>
 <?php } ?>

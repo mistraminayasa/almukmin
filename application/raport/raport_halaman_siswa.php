@@ -21,10 +21,10 @@
                     <input type='submit' style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
                   </form>
                 </div>
-                <div class='box-body'>
+                <div class='box-body table-responsive no-padding'>
                 <b class='semester'>CAPAIAN KOMPETENSI</b>
 
-        <table class='table table-bordered table-striped'>
+        <table class='table table-bordered table-striped table-hover'>
           <tr>
             <th bgcolor=#e3e3e3 rowspan='3'> <center>No</center></th>
             <th bgcolor=#e3e3e3 width='160px' rowspan='3'><center>Komponen</center></th>

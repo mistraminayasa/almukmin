@@ -76,10 +76,10 @@
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Edit Data Pertanyaan Penilaian Diri</h3>
                 </div>
-              <div class='box-body'>
+              <div class='box-body table-responsive no-padding'>
               <form method='POST' class='form-horizontal' action='' enctype='multipart/form-data'>
                 <div class='col-md-12'>
-                  <table class='table table-condensed table-bordered'>
+                  <table class='table table-condensed table-bordered table-hover'>
                   <tbody>
                     <input type='hidden' name='id' value='$s[id_pertanyaan_penilaian]'>
                     <tr><th width='120px' scope='row'>Pertanyaan</th> <td><textarea style='height:100px' class='form-control' name='a'>$s[pertanyaan]</textarea> </td></tr>
@@ -109,10 +109,10 @@
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Tambah Data Pertanyaan Penilaian Diri</h3>
                 </div>
-              <div class='box-body'>
+              <div class='box-body table-responsive no-padding'>
               <form method='POST' class='form-horizontal' action='' enctype='multipart/form-data'>
                 <div class='col-md-12'>
-                  <table class='table table-condensed table-bordered'>
+                  <table class='table table-condensed table-bordered table-hover'>
                   <tbody>
                     <tr><th width='120px' scope='row'>Pertanyaan</th> <td><textarea style='height:100px' class='form-control' name='a'></textarea> </td></tr>
                   </tbody>

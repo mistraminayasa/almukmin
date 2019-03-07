@@ -1,9 +1,9 @@
 <?php if ($_GET[act]==''){ ?>
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"><?php echo "Data Kompetensi Dasar pada $tahunakademik[id_tahun_akademik]" ; ?></h3>
-                  <!-- <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title"><?php echo "Data Kompetensi Dasar pada $tahunakademik[id_tahun_akademik]" ; ?></h3>
+            <!-- <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
                     <select name='tahun' style='padding:4px'>
                         <?php 
                             echo "<option value=''>- Pilih Tahun Akademik -</option>";
@@ -20,11 +20,11 @@
                     <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
                   </form>-->
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
                         <th style='width:20px'>No</th>
                         <th>Kode Pelajaran</th>
                         <th>Jadwal Pelajaran</th>
@@ -35,10 +35,10 @@
                         <th>Selesai</th>
                         <th>Ruang</th>
                         <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                     if (isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -73,11 +73,11 @@
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-                </div>
-            </div>
+                </tbody>
+            </table>
+        </div><!-- /.box-body -->
+    </div>
+</div>
 
 <?php 
 }elseif($_GET[act]=='lihat'){
@@ -90,7 +90,7 @@
                       echo "<a class='pull-right btn btn-primary btn-sm' href='index.php?view=kompetensiguru&act=tambah&jdwl=$_GET[id]'>Tambahkan Kompetensi Dasar</a>";
                   }
                 echo "</div>
-                <div class='box-body'>
+                <div class='box-body table-responsive no-padding'>
                   <div class='col-md-12'>
                   <table class='table table-condensed table-hover'>
                       <tbody>
@@ -155,10 +155,10 @@
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Tambah Kompetensi Dasar</h3>
                 </div>
-              <div class='box-body'>
+              <div class='box-body table-responsive no-padding'>
               <form method='POST' class='form-horizontal' action='' enctype='multipart/form-data'>
                 <div class='col-md-12'>
-                  <table class='table table-condensed table-bordered'>
+                  <table class='table table-condensed table-bordered table-hover'>
                   <tbody>
                   <input type='hidden' name='jdwl' value='$_GET[jdwl]'>
                     <tr><th width='140px' scope='row'>Mata Pelajaran</th>   <td><select class='form-control' name='c'>"; 
@@ -208,10 +208,10 @@
                 <div class='box-header with-border'>
                   <h3 class='box-title'>Edit Data Kompetensi Dasar</h3>
                 </div>
-              <div class='box-body'>
+              <div class='box-body table-responsive no-padding'>
               <form method='POST' class='form-horizontal' action='' enctype='multipart/form-data'>
                 <div class='col-md-12'>
-                  <table class='table table-condensed table-bordered'>
+                  <table class='table table-condensed table-bordered table-hover'>
                   <tbody>
                   <input type='hidden' name='jdwl' value='$_GET[jdwl]'>
                   <input type='hidden' name='id' value='$_GET[id]'>

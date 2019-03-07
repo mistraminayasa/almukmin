@@ -1,8 +1,9 @@
-            <div class="col-xs-12">  
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title"><?php echo "Jadwal Mengajar Anda pada $tahunakademik[id_tahun_akademik]" ; ?></h3>
-                  <!-- <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">
+                            <?php echo "Jadwal Mengajar Anda pada $tahunakademik[id_tahun_akademik]" ; ?></h3>
+                        <!-- <form style='margin-right:5px; margin-top:0px' class='pull-right' action='' method='GET'>
                     <select name='tahun' style='padding:4px'>
                         <?php 
                             echo "<option value=''>- Pilih Tahun Akademik -</option>";
@@ -19,25 +20,25 @@
                     <input type="submit" style='margin-top:-4px' class='btn btn-success btn-sm' value='Lihat'>
                   </form>-->
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th style='width:20px'>No</th>
-                        <th>Kode Pelajaran</th>
-                        <th>Jadwal Pelajaran</th>
-                        <th>Kelas</th>
-                        <th>Guru</th>
-                        <th>Hari</th>
-                        <th>Mulai</th>
-                        <th>Selesai</th>
-                        <th>Ruangan</th>
-                        <th>Semester</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  <?php
+                    </div><!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table id="example1" class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th style='width:20px'>No</th>
+                                    <th>Kode Pelajaran</th>
+                                    <th>Jadwal Pelajaran</th>
+                                    <th>Kelas</th>
+                                    <th>Guru</th>
+                                    <th>Hari</th>
+                                    <th>Mulai</th>
+                                    <th>Selesai</th>
+                                    <th>Ruangan</th>
+                                    <th>Semester</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                     if (isset($_GET[tahun])){
                       $tampil = mysql_query("SELECT a.*, e.nama_kelas, b.namamatapelajaran, b.kode_pelajaran, c.nama_guru, d.nama_ruangan FROM rb_jadwal_pelajaran a 
                                             JOIN rb_mata_pelajaran b ON a.kode_pelajaran=b.kode_pelajaran
@@ -70,8 +71,8 @@
                       $no++;
                       }
                   ?>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
+                            </tbody>
+                        </table>
+                    </div><!-- /.box-body -->
                 </div>
             </div>

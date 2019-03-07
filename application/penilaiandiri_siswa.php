@@ -19,23 +19,23 @@ if ($_GET[act]==''){
        echo "<script>window.alert('Sukses Simpan Jawaban Penilaian Diri...');
                 window.location='index.php?view=penilaiandirisiswa'</script>";
     }
-?> 
-            <div class="col-xs-12">  
-              <div class="box">
-              <form action='' method='POST'>
-                <div class="box-header">
-                  <h3 class="box-title">Data Pertanyan Penilaian Diri </h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example3" class="table table-bordered table-striped">
+?>
+<div class="col-xs-12">
+    <div class="box">
+        <form action='' method='POST'>
+            <div class="box-header">
+                <h3 class="box-title">Data Pertanyan Penilaian Diri </h3>
+            </div><!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table id="example3" class="table table-hover">
                     <thead>
-                      <tr>
-                        <th style='width:20px'>No</th>
-                        <th>Pertanyaan</th>
-                      </tr>
+                        <tr>
+                            <th style='width:20px'>No</th>
+                            <th>Pertanyaan</th>
+                        </tr>
                     </thead>
                     <tbody>
-                  <?php 
+                        <?php 
                     $t = mysql_fetch_array(mysql_query("SELECT * FROM rb_siswa where nisn='$_SESSION[id]'"));
                     $tampil = mysql_query("SELECT * FROM rb_pertanyaan_penilaian where status='diri' ORDER BY id_pertanyaan_penilaian DESC");
                     $no = 1;
@@ -54,10 +54,11 @@ if ($_GET[act]==''){
                       }
                   ?>
                     </tbody>
-                  </table>
-                  <input type="submit" name='submit' value='Simpan Semua Jawaban' class='pull-left btn btn-primary btn-sm'>
-                </div><!-- /.box-body -->
-              </form>
-              </div><!-- /.box -->
-            </div>
+                </table>
+                <input type="submit" name='submit' value='Simpan Semua Jawaban'
+                    class='pull-left btn btn-primary btn-sm'>
+            </div><!-- /.box-body -->
+        </form>
+    </div><!-- /.box -->
+</div>
 <?php } ?>

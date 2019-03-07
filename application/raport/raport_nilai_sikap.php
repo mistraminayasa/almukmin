@@ -26,7 +26,7 @@
                   <h3 class='box-title'>Input Nilai Sikap Siswa</b></h3>
                 </div>
             
-        <div class='box-body'>
+        <div class='box-body table-responsive no-padding'>
               <div class='col-md-12'>
               <table class='table table-condensed table-hover'>
                   <tbody>
